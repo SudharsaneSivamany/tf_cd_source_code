@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: myweb
+  name: myweb-1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myweb
+  template:
+    metadata:
+      labels:
+        app: myweb
+    spec:
+      containers:
+      - image: gcr.io/gdc-clouddeploy-source/nginx:v1
+        imagePullPolicy: Always
+        name: myweb
+        ports:
+        - containerPort: 80

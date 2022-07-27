@@ -1,0 +1,8 @@
+steps:
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: bash
+  args:
+    - '-c'
+    - gcloud beta deploy releases create rel-${_RELEASE_NAME_}$(date +%y%m%d-%s) --delivery-pipeline=google-pipeline-same-gke-1 --region=us-central1
+options:
+  logging: CLOUD_LOGGING_ONLY

@@ -1,0 +1,23 @@
+apiVersion: skaffold/v2beta16
+kind: Config
+
+profiles:
+
+- name: test
+  deploy:
+   kustomize:
+    flags:
+     global:
+     - --namespace=test
+    paths:
+#{dev}
+    - env/test
+- name: prod
+  deploy:
+   kustomize:
+    flags:
+     global:
+     - --namespace=prod
+    paths:
+#{prod}
+    - env/prod
